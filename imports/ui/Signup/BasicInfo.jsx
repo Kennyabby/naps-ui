@@ -1,5 +1,10 @@
 import React,{Component} from 'react';
 import {Validate} from './Validate.jsx';
+
+valueList=[];
+infoList=[];
+basicInfo1="";
+basicInfo2=""
 export class BasicInfo extends Component{
     
     constructor(){
@@ -11,17 +16,19 @@ export class BasicInfo extends Component{
             
         }
     }
-    valueList=[];
-    infoList=[];
-    basicInfo1="";
-    basicInfo2=""
+    
     onClickChange=(e)=>{
         this.setState({
             gender:e.target.value
         })
         this.props.getGender(e.target.value);
     }
-    
+    getlastName=(e)=>{
+        this.props.getlastName(e);
+    }
+    getotherName=(e)=>{
+        this.props.getotherName(e);
+    }
     render(){
         
         return(
@@ -37,17 +44,17 @@ export class BasicInfo extends Component{
 
     componentDidMount(){
         basicInfo1 = <div>
-            <p><input className='input' type="text" placeholder='Enter Last Name' onChange={this.props.getlastName}/></p>
-            <p><input className='input' type="text" placeholder='Enter Other Names' onChange={this.props.getotherName}/></p>
+            <p><input className='input' type="text" placeholder='Enter Last Name' onChange={this.getlastName}/></p>
+            <p><input className='input' type="text" placeholder='Enter Other Names' onChange={this.getotherName}/></p>
             <div style={{textAlign:"center"}} onChange={this.onClickChange}>
-                <p>Male<input type="radio"  value="Male" name="gender" checked={this.state.gender === "Male"}/>
-                    Female<input type="radio" value="Female" name="gender" checked={this.state.gender === "Female"}/></p>
+                <p>Male<input type="radio"  value="Male" name="gender" defaultChecked={this.state.gender === "Male"}/>
+                    Female<input type="radio" value="Female" name="gender" defaultChecked={this.state.gender === "Female"}/></p>
             </div>
         </div>
         basicInfo2 = <div>
 
         </div>
-       infoList=[basicInfo1,basicInfo2]
+        infoList=[basicInfo1,basicInfo2]
         this.setState({
             basicInfo:infoList[this.state.count]
         })
