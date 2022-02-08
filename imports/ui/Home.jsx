@@ -28,40 +28,40 @@ export class Home extends Component{
             this.setState({
                 homeColor:"white",
             })
-            this.props.gotohome();
+            this.props.gotopage("Home");
         }
         else if (e.target.innerHTML==="Current"){
             this.setToDefault();
             this.setState({
                 currentColor:"white",
             })
-            this.props.gotocurrent();
+            this.props.gotopage("Current");
         }
         else if (e.target.innerHTML==="About"){
             this.setToDefault();
             this.setState({
                 aboutColor:"white",
             })
-            this.props.gotoabout();
+            this.props.gotopage("About");
         }
         else if (e.target.innerHTML==="Events"){
             this.setToDefault();
             this.setState({
                 eventsColor:"white",
             })
-            this.props.gotoevents();
+            this.props.gotopage("Events");
         }
         else if (e.target.innerHTML==="Sign in"){
             this.setToDefault();
             this.setState({
                 signinColor:"white"
             })
-            this.props.gotosignin();
+            this.props.gotopage("Signin");
         }
     }
 
     signup=()=>{
-        this.props.signup();
+        this.props.gotopage("Signup");
     }
     render(){
         return(
