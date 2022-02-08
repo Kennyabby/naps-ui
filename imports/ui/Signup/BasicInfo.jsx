@@ -3,16 +3,18 @@ import {Validate} from './Validate.jsx';
 
 valueList=[];
 infoList=[];
-basicInfo1="";
-basicInfo2=""
+var basicInfo1="";
+var basicInfo2="";
+var count=0;
 export class BasicInfo extends Component{
     
     constructor(){
         super();
         this.state = {
+            infos:0,
             count:0,
             gender:"Male",
-            basicInfo:"Loading...",
+            basicInfo:"Loading..."
             
         }
     }
@@ -29,6 +31,24 @@ export class BasicInfo extends Component{
     getotherName=(e)=>{
         this.props.getotherName(e);
     }
+    gotoNext=()=>{
+        count++
+        this.setState({
+            count:count,
+            basicInfo:infoList[count]
+        })
+        
+    }
+    gotoPrev=()=>{
+        count--
+        this.setState({
+            count:count,
+            basicInfo:infoList[count]
+        })
+    }
+    gotoFinish=()=>{
+
+    }
     render(){
         
         return(
@@ -37,7 +57,9 @@ export class BasicInfo extends Component{
                     <img className='user' src="user.png" height="120px"/>
                 </div>
                 {this.state.basicInfo}
-                <Validate/>
+                <Validate infosCount={this.props.infosCount} infoList={infoList} 
+                count={this.state.count} gotoNext={this.gotoNext} gotoPrev={this.gotoPrev}
+                gotoFinish={this.gotoFinish}/>
             </div>
         )
     }
@@ -56,7 +78,7 @@ export class BasicInfo extends Component{
         </div>
         infoList=[basicInfo1,basicInfo2]
         this.setState({
-            basicInfo:infoList[this.state.count]
+            basicInfo:infoList[count]
         })
     }
     

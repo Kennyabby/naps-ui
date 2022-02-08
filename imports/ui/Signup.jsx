@@ -6,7 +6,9 @@ export class Signup extends Component{
         super();
         this.state = {
             lastName: "",
-            otherName: ""
+            otherName: "",
+            infos:["Basic Info", "School Info", "Contact Address", "Signin Info", "Finish"],
+            infosCount:0
         }
     }
 
@@ -41,7 +43,7 @@ export class Signup extends Component{
                             <li className='side'>Finish</li>
                         </ul>
                         <div className='infoview'>
-                            <BasicInfo getlastName={this.getlastName} getotherName={this.getotherName}
+                            <BasicInfo infosCount={this.state.infosCount} getlastName={this.getlastName} getotherName={this.getotherName}
                             getGender={this.getGender}/>
                         </div>
                     </div>

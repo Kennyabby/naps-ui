@@ -169,3 +169,21 @@ body{
 	padding: 0px;
 	border-radius: 80px;
 }
+.butt{
+	border: solid red 1px;
+	color:white;
+	background-color: rgb(223, 16, 16);
+	border-radius: 30px;
+	margin: 25px;
+	margin-top: 40px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: monospace;
+	font-size: .8rem;
+	cursor: pointer;
+}
+:hover.butt{
+	background-color: white;
+	color: red;
+}
