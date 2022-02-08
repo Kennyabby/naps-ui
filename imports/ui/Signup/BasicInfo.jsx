@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Validate} from './Signup/Validate.jsx';
+import {Validate} from './Validate.jsx';
 export class BasicInfo extends Component{
     
     constructor(){
