@@ -121,7 +121,6 @@ body{
 	font-family: monospace;
 	font-size: .9rem;
 	cursor: pointer;
-	border-bottom: solid rgb(76, 241, 76) 2px;
 	border-radius: 3px;
 }
 .infoview{
@@ -133,18 +132,18 @@ body{
 	margin-left: 10px;
 }
 .input{
-	border: solid black 1px;
+	
 	outline:none;
 	border-top:none;
 	border-right: none;
 	border-left: none;
+	float: left;
 	text-align: left;
 	margin: 0px;
 	padding: 10px;
 	margin-bottom: 20px;
 	padding-right: 50px;
-	padding-left: 30px;
-	margin-right: 20px;
+	margin-right: 50px;
 	
 }
 .signinpage{

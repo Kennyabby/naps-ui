@@ -3,13 +3,11 @@ import {Validate} from './Validate.jsx';
 
 valueList=[];
 infoList=[];
-var basicInfo1="";
-var basicInfo2="";
-var count=0;
+count=0;
 export class BasicInfo extends Component{
     
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             infos:0,
             count:0,
@@ -17,13 +15,14 @@ export class BasicInfo extends Component{
             basicInfo:"Loading..."
             
         }
+        
     }
     
-    onClickChange=(e)=>{
+    getGender=(gender)=>{
         this.setState({
-            gender:e.target.value
+            gender:gender
         })
-        this.props.getGender(e.target.value);
+        this.props.getGender(gender);
     }
     getlastName=(e)=>{
         this.props.getlastName(e);
@@ -31,26 +30,32 @@ export class BasicInfo extends Component{
     getotherName=(e)=>{
         this.props.getotherName(e);
     }
+    
     gotoNext=()=>{
-        count++
-        this.setState({
-            count:count,
-            basicInfo:infoList[count]
-        })
+        count++;
+        if(count>1){
+            this.props.gotoNext(0,"School Info");
+            count=1
+        }else{
+            this.props.gotoNext(count,"Basic Info");
+            this.setState({
+                count:count
+            })
+        }
         
     }
     gotoPrev=()=>{
-        count--
+        count--;
         this.setState({
-            count:count,
-            basicInfo:infoList[count]
-        })
+            count:count
+        }) 
     }
     gotoFinish=()=>{
-
+      
     }
+    
     render(){
-        
+    
         return(
             <div className='basicinfo'>
                 <div className='usercover'>
@@ -62,23 +67,13 @@ export class BasicInfo extends Component{
                 gotoFinish={this.gotoFinish}/>
             </div>
         )
+        
     }
 
     componentDidMount(){
-        basicInfo1 = <div>
-            <p><input className='input' type="text" placeholder='Enter Last Name' onChange={this.getlastName}/></p>
-            <p><input className='input' type="text" placeholder='Enter Other Names' onChange={this.getotherName}/></p>
-            <div style={{textAlign:"center"}} onChange={this.onClickChange}>
-                <p>Male<input type="radio"  value="Male" name="gender" defaultChecked={this.state.gender === "Male"}/>
-                    Female<input type="radio" value="Female" name="gender" defaultChecked={this.state.gender === "Female"}/></p>
-            </div>
-        </div>
-        basicInfo2 = <div>
-
-        </div>
-        infoList=[basicInfo1,basicInfo2]
+        
         this.setState({
-            basicInfo:infoList[count]
+            basicInfo:this.props.currentBasicInfo
         })
     }
     

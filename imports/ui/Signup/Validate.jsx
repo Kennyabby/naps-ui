@@ -14,7 +14,6 @@ export class Validate extends Component{
     }
 
     render(){
-        
         return(
             <div>
                 <p><button style={{display:this.state.showprev, float:"left"}} className='butt' onClick={this.props.gotoPrev}>Prev</button> 
@@ -38,8 +37,12 @@ export class Validate extends Component{
                     showfinish:"none"
                 }) 
             }
-            if (this.props.count===this.props.infoList.length){
-                
+            if (this.props.count>0){
+                this.setState({
+                    shownext:"block",
+                    showprev:"block",
+                    showfinish:"none"
+                }) 
             }
         }
         else if (this.props.infosCount===5){
